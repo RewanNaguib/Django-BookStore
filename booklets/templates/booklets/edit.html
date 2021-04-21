@@ -1,0 +1,9 @@
+{% extends "layout/main.html" %}
+{% block title %} edit booklet  {% endblock %}
+{% block body %}
+<form action= "{% url 'edit' booklet.id %}" method ="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update booklet</button>
+</form>    
+{% endblock %}

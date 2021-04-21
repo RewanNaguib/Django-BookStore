@@ -1,0 +1,9 @@
+{% extends "layout/main.html" %}
+{% block title %} create booklet  {% endblock %}
+{% block body %}
+<form action= "{% url 'create' %}" method ="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add booklet</button>
+</form>    
+{% endblock %}
