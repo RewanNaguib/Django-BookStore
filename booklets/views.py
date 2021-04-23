@@ -2,12 +2,17 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .forms import BookletForm
 from .models import Booklet
+from django.contrib.auth.decorators import login_required,permission_required
 
+
+@login_required
+@permission_required(["booklets.view_booklet"],raise_exception=True)
 def index(request):
     booklets=Booklet.objects.all()
     return render(request,"booklets/index.html",{"booklets":booklets})
     # return HttpResponse ("hello")
 
+@login_required
 def create(request):
     form=BookletForm(request.POST or None)
     if form.is_valid():
