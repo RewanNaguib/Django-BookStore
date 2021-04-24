@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # 'booklets',
+    'booklets',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
-    'booklets.apps.BookletsConfig',
+    'rest_framework',
+    'rest_framework.authtoken',
+    # 'booklets.apps.BookletsConfig',
 ]
 
 MIDDLEWARE = [
@@ -51,9 +53,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'accounts.middleware.SimpleMiddleware'
+    # 'accounts.middleware.SimpleMiddleware'
     
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
 
 ROOT_URLCONF = 'book.urls'
 
